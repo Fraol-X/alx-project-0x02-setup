@@ -1,6 +1,8 @@
+import React from 'react';
+import { useState } from 'react';
+import Header from '../components/layout/Header';
 import Card from '../components/common/Card';
 import PostModal from '../components/common/PostModal';
-import { useState } from 'react';
 
 interface Post {
   title: string;
@@ -8,12 +10,13 @@ interface Post {
 }
 
 export default function HomePage() {
-  const [posts, setPosts] = useState<Post[]>([]); 
+  const [posts, setPosts] = useState<Post[]>([]);
 
-  const addPost = (post: Post) => setPosts([...posts, post]); 
+  const addPost = (post: Post) => setPosts([...posts, post]);
 
   return (
     <div>
+      <Header />
       <h1>Welcome to the Home Page</h1>
       <Card title="Card 1" content="This is the first card." />
       <Card title="Card 2" content="This is the second card." />
