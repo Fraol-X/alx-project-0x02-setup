@@ -1,7 +1,6 @@
-import Header from "../components/layout/Header";
-export default function Home() {
-  return <>
-  <Header />
-  <h1>Welcome to Next.js Project</h1>
-  </>
-}
+const HomePage = () => (
+  <div>
+    <h1>Welcome to the project!</h1>
+  </div>
+)
+export default HomePage

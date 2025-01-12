@@ -1,41 +1,43 @@
 import { useState } from 'react';
 
-interface Post {
-  title: string;
-  content: string;
-}
-
 interface PostModalProps {
-  onAddPost: (post: Post) => void;
+  onClose: () => void; // Function with no arguments that returns void
+  onSubmit: (post: { title: string; content: string }) => void; // Function that accepts an object and returns void
 }
 
-export default function PostModal({ onAddPost }: PostModalProps) {
+const PostModal: React.FC<PostModalProps> = ({ onClose, onSubmit }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    onSubmit({ title, content });
+    onClose();
+  };
+
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onAddPost({ title, content });
-        }}
-      >
+      <h2>Add Post</h2>
+      <form>
         <input
-          type="text"
-          placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          style={{ color: 'black' }} 
+          placeholder="Title"
         />
         <textarea
-          placeholder="Content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          style={{ color: 'black' }} 
+          placeholder="Content"
         />
-        <button type="submit">Add Post</button>
+        <button type="button" onClick={handleSubmit}>
+          Submit
+        </button>
+        <button type="button" onClick={onClose}>
+          Close
+        </button>
       </form>
     </div>
   );
-}
+};
+
+export default PostModal;

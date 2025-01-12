@@ -1,22 +1,10 @@
-import React from 'react';
+import { UserProps } from '../../interfaces';
 
-interface Address {
-  street: string;
-  city: string;
-  zipcode: string;
-}
-
-interface UserProps {
-  name: string;
-  email: string;
-  address: Address;
-}
-
-const UserCard: React.FC<UserProps> = ({ name, email, address }) => (
-  <div className="border p-4 rounded">
-    <h2>{name}</h2>
-    <p>Email: {email}</p>
-    <p>Address: {`${address.street}, ${address.city}, ${address.zipcode}`}</p>
+const UserCard = ({ name, email, address }: UserProps) => (
+  <div>
+    <h3>{name}</h3>
+    <p>{email}</p>
+    <p>{address}</p>
   </div>
 );
 

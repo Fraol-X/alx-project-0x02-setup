@@ -1,17 +1,11 @@
-import React from 'react';
+import Link from 'next/link';
 
-const Header = () => {
-  return (
-    <header className="bg-gray-800 text-white p-4">
-      <nav>
-        <ul className="flex space-x-4">
-          <li><a href="/home">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/posts">Posts</a></li>
-        </ul>
-      </nav>
-    </header>
-  );
-};
+const Header = () => (
+  <nav>
+    <Link href="/home">Home</Link>
+    <Link href="/about">About</Link>
+    <Link href="/posts">Posts</Link>
+  </nav>
+);
 
 export default Header;
